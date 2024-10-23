@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вікторина на Хелловін</title>
+    <!-- Bootstrap посилання -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #0c0c0c;
+            color: #f5f5f5;
+            font-family: 'Creepster', cursive;
+        }
+
+        .navbar {
+            background-color: #2b2b2b;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        h1, h2 {
+            text-align: center;
+            text-shadow: 3px 3px 5px #ff4500;
+            animation: spookyText 2s infinite alternate;
+        }
+
+        @keyframes spookyText {
+            from {
+                transform: scale(1);
+                color: #ff4500;
+            }
+            to {
+                transform: scale(1.05);
+                color: #ff6600;
+            }
+        }
+
+        .quiz-container {
+            margin-top: 2rem;
+            background-color: #2b2b2b;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .quiz-question {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .quiz-option {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 10px;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .quiz-option:hover {
+            border-color: #ff4500;
+        }
+
+        #result {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .monster-image {
+            margin-top: 20px;
+            width: 200px;
+            height: auto;
+        }
+
+        footer {
+            background-color: #2b2b2b;
+            color: #ff7f50;
+            text-align: center;
+            padding: 15px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        a:hover {
+            color: #ff4500;
+            text-shadow: 2px 2px 10px #ff7f50;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Хедер -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">👻 Halloween ItStep</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Перемикач навігації">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="Home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Gallery.html">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="Halloween_quiz.html">Quiz</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Author_page.html">Author page</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Основний контент -->
+    <div class="container mt-4">
+        <h1>Перевірте свої знання про монстрів!</h1>
+        <div class="quiz-container">
+            <!-- Питання вікторини -->
+            <div id="quiz-question-container">
+                <!-- Питання будуть відображатися у цьому дів по одному! -->
+            </div>
+            
+            <!-- Результати -->
+            <div id="result">
+                <h2>Ви відповіли <span id="correct-answers"></span> з <span id="total-questions"></span> правильних відповідей!</h2>
+                <p>Це <span id="percentage"></span>% точності.</p>
+                <h3 id="developer-description"></h3>
+                <img id="monster-image" class="monster-image" src = "http://dummyimage.com/120" alt="Результат монстра">
+            </div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer>
+        <p>&copy; 2024 ItStep Halloween Site. All Rights Reserved. 🎃</p>
+    </footer>
+
+    <!-- Bootstrap JS, Popper.js, та jQuery для динамічності -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Скрипт вікторини -->
+    <script>
+        const questions = [
+            { question: "Які основні мови програмування використовуються для створення веб-сайтів?", options: ["Python, C++, Java", "Python, HTML, Java", "HTML, CSS, JavaScript"], correct: 2 },
+            { question: "Який тег використовується для вставки зображення на сайт?", options: ["a", "img", "li"], correct: 1 },
+            // При затвердженні проєкта, додамо більше питаннь!
+        ];
+
+        let currentQuestionIndex = 0;
+        let correctAnswers = 0;
+
+        function loadQuestion() {
+            if (currentQuestionIndex < questions.length) {
+                const questionData = questions[currentQuestionIndex];
+                const container = document.getElementById('quiz-question-container');
+                container.innerHTML = `
+                    <div class="quiz-question">
+                        <h2>${currentQuestionIndex + 1}. ${questionData.question}</h2>
+                        ${questionData.options.map((option, index) => `
+                            <label class="quiz-option">
+                                <input type="radio" name="q${currentQuestionIndex}" value="${index}"> ${option}
+                            </label>
+                        `).join('')}
+                        <button class="btn btn-primary mt-3" onclick="submitAnswer()">Далі</button>
+                    </div>
+                `;
+            } else {
+                showResults();
+            }
+        }
+
+        function submitAnswer() {
+            const selectedOption = document.querySelector(`input[name="q${currentQuestionIndex}"]:checked`);
+            if (selectedOption) {
+                const answerIndex = parseInt(selectedOption.value);
+                if (answerIndex === questions[currentQuestionIndex].correct) {
+                    correctAnswers++;
+                }
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                alert("Оберіть відповідь перед її відправленням!");
+            }
+        }
+
+        function showResults() {
+            const totalQuestions = questions.length;
+            const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+            
+            // Відображення результатів
+            document.getElementById('correct-answers').innerText = correctAnswers;
+            document.getElementById('total-questions').innerText = totalQuestions;
+            document.getElementById('percentage').innerText = percentage;
+            document.getElementById('quiz-question-container').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+
+            // Вибір тексту результату
+            const developerDescription = document.getElementById('developer-description');
+            if (percentage >= 80) {
+                developerDescription.innerText = 'Ти божевільний геній Веб-розробки!';
+                document.getElementById('monster-image').src = 'http://dummyimage.com/300';
+            } else if (percentage >= 50) {
+                developerDescription.innerText = 'Ти зомбі-розробник!';
+                document.getElementById('monster-image').src = 'http://dummyimage.com/300';
+            } else {
+                developerDescription.innerText = 'Ти привид-розробник!';
+                document.getElementById('monster-image').src = 'http://dummyimage.com/300';
+            }
+        }
+
+        // Завантажуємо питання
+        window.onload = loadQuestion;
+    </script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея монстрів</title>
+    <!-- Bootstrap посилання -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #0c0c0c;
+            color: #f5f5f5;
+            font-family: 'Creepster', cursive;
+        }
+
+        .navbar {
+            background-color: #2b2b2b;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .card {
+            background-color: #2b2b2b;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card img {
+            opacity: 0.85;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(255, 69, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 4rem;
+            text-shadow: 3px 3px 5px #ff4500;
+            animation: spookyText 2s infinite alternate;
+        }
+
+        @keyframes spookyText {
+            from {
+                transform: scale(1);
+                color: #ff4500;
+            }
+            to {
+                transform: scale(1.05);
+                color: #ff6600;
+            }
+        }
+
+        footer {
+            background-color: #2b2b2b;
+            color: #ff7f50;
+            text-align: center;
+            padding: 15px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        a:hover {
+            color: #ff4500;
+            text-shadow: 2px 2px 10px #ff7f50;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Хедер -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">👻 Halloween ItStep</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="Home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="Gallery.html">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Halloween_quiz.html">Quiz</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Author_page.html">Author page</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Основний контент сторінки -->
+    <div class="container mt-4">
+        <h1>Discover the Spookiest Monsters!</h1>
+
+        <!-- Галерея карток -->
+        <div class="row mt-4">
+            <!-- Картка 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="http://dummyimage.com/350" class="card-img-top" alt="Vampire">
+                    <div class="card-body">
+                        <h5 class="card-title">Вампір</h5>
+                        <p class="card-text">Ночна істота, вампір відомий своєю жагою до крові та своєю чарівною, але смертоносною зовнішністю.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Картка 2-->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="http://dummyimage.com/350" class="card-img-top" alt="Werewolf">
+                    <div class="card-body">
+                        <h5 class="card-title">Перевертень</h5>
+                        <p class="card-text">Перетворюючись під повний місяць, перевертень є лютим звіром, який жадає хаосу.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Картка 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="http://dummyimage.com/350" class="card-img-top" alt="Witch">
+                    <div class="card-body">
+                        <h5 class="card-title">Відьма</h5>
+                        <p class="card-text">Заклинаннями та зіллям відьма може зачарувати або знищити, майстер темних мистецтв.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Картка 4 -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="http://dummyimage.com/350" class="card-img-top" alt="Ghost">
+                    <div class="card-body">
+                        <h5 class="card-title">Привид</h5>
+                        <p class="card-text">Блукаючи по землі, привид переслідує живих, шукаючи помсти чи розлучення з минулим.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Картка 5 -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="http://dummyimage.com/350" class="card-img-top" alt="Zombie">
+                    <div class="card-body">
+                        <h5 class="card-title">Зомбі</h5>
+                        <p class="card-text">Зомбі, що повстали з могил, є живими мерцями, які нескінченно шукають плоть, щоб пожерти її.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Картка 6 -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="http://dummyimage.com/350" class="card-img-top" alt="Mummy">
+                    <div class="card-body">
+                        <h5 class="card-title">Мумія</h5>
+                        <p class="card-text">Загорнута в старовинні бинти, мумія постає, щоб захистити скарби давно забутої епохи.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer>
+        <p>>&copy; 2024 ItStep Halloween Site. All Rights Reserved. 🎃</p>
+    </footer>
+
+    <!-- Bootstrap JS, Popper.js, та jQuery посилання для динамічності-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
