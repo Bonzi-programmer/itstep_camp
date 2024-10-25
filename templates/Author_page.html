@@ -10,6 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
     
     <style>
+        html, body {
+            height: 100%; 
+            margin: 0; 
+            display: flex;
+            flex-direction: column; 
+        }
+
         body {
             background-color: #0c0c0c;
             color: #f5f5f5;
@@ -55,13 +62,19 @@
             margin-bottom: 20px;
         }
 
+        .content {
+            flex: 1; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center; 
+        }
+
         footer {
             background-color: #2b2b2b;
             color: #ff7f50;
             text-align: center;
             padding: 15px;
-            position: relative;
-            bottom: 0;
             width: 100%;
             box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
         }
@@ -70,6 +83,13 @@
             color: #ff4500;
             text-shadow: 2px 2px 10px #ff7f50;
             transition: 0.3s;
+        }
+
+        img.flying {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            z-index: 10;
         }
     </style>
 </head>
@@ -98,25 +118,60 @@
         </div>
     </nav>
 
-    <!-- Основной контент -->
-    <div class="container mt-4">
+    <!-- Основний контент -->
+    <div class="container mt-4 content"> 
         <h1>About the Author</h1>
         <div class="author-info">
-            <img src="http://dummyimage.com/150" alt="Author" class="author-image">
+            <img src="/images/Author.jpg" alt="Author" class="author-image">
             <h2>👻 Ентузіаст Хеллоуїна та програміст 🎃</h2>
             <p>Привіт! Я творець цього моторошного веб-сайту про Хелловін. Мені подобається поєднувати чарівний світ Хелловіну з програмуванням!</p>
             <p>Досліджуйте веб-сайт, перевірте свої знання про веб-розробку та насолоджуйтеся моторошною атмосферою!</p>
         </div>
     </div>
-
+    <!-- Кажан та привид -->
+    <img src="/images/bat.gif" id="bat" class="flying" alt="Bat">
+    <img src="/images/ghost.png" id="ghost" class="flying" alt="Ghost">
     <!-- Футер -->
     <footer>
-        <p>>&copy; 2024 ItStep Halloween Site. All Rights Reserved. 🎃</p>
+        <p>&copy; 2024 ItStep Halloween Site. All Rights Reserved. 🎃</p>
     </footer>
 
     <!-- Bootstrap JS, Popper.js, and jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function flyImage(id, speed) {
+            const image = document.getElementById(id);
+            let xPos = Math.random() * window.innerWidth;
+            let yPos = Math.random() * window.innerHeight;
+            let xDir = Math.random() < 0.5 ? -1 : 1;
+            let yDir = Math.random() < 0.5 ? -1 : 1;
+
+            function move() {
+                xPos += xDir * speed;
+                yPos += yDir * speed;
+
+                if (xPos <= 0 || xPos >= window.innerWidth - image.width) {
+                    xDir *= -1;
+                }
+                if (yPos <= 0 || yPos >= window.innerHeight - image.height) {
+                    yDir *= -1;
+                }
+
+                image.style.left = xPos + 'px';
+                image.style.top = yPos + 'px';
+
+                requestAnimationFrame(move);
+            }
+
+            move();
+        }
+
+        window.onload = function() {
+            flyImage('bat', 3);   // кажан
+            flyImage('ghost', 2); // привид
+        };
+    </script>
 </body>
 </html>

@@ -12,10 +12,21 @@
     <style>
         /* Основные стили */
         body {
-            background-color: #0c0c0c;
-            color: #f5f5f5;
+            background-image: url('https://cdn.pixabay.com/photo/2017/10/10/16/55/halloween-2837936_1280.png'); 
+            background-repeat: no-repeat;
+            background-size: cover;
             font-family: 'Creepster', cursive;
             overflow-x: hidden;
+            background-attachment: fixed;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            flex: 1; /* Занимает оставшееся пространство между хедером и футером */
+            padding-bottom: 50px; /* Отступ снизу, чтобы футер не налезал на контент */
         }
 
         /* Стиль для хедера */
@@ -45,30 +56,31 @@
 
         /* Карусель */
         .carousel-item {
-            text-align: center; /* Центрируем контент карточки */
+            text-align: center; 
         }
 
         .carousel-item img {
-            width: 70%; /* Устанавливаем ширину изображений на 70% */
+            width: 400px; 
             height: auto;
-            max-width: 350px; /* Максимальная ширина изображения */
         }
 
-        /* Обратный отсчёт */
+        #countdown_back {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
         #countdown {
+            color: white;
             font-size: 2rem;
             text-align: center;
             margin: 20px 0;
         }
 
-        /* Стиль футера */
+        /* Стиль для футера */
         footer {
             background-color: #2b2b2b;
             color: #ff7f50;
             text-align: center;
             padding: 15px;
-            position: relative;
-            bottom: 0;
             width: 100%;
             box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
         }
@@ -77,6 +89,7 @@
             color: #ff4500;
             text-shadow: 2px 2px 10px #ff7f50;
             transition: 0.3s;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -90,7 +103,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href=index.html">Home</a>
+                    <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="Gallery.html">Gallery</a>
@@ -99,13 +112,13 @@
                     <a class="nav-link" href="Halloween_quiz.html">Quiz</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Author_page.html">Authon page</a>
+                    <a class="nav-link" href="Author_page.html">Author page</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <!-- Заголовок -->
+    <!-- Контейнер контента -->
     <div class="container mt-4">
         <h1>Welcome to the Spooky World of Halloween!</h1>
 
@@ -113,31 +126,21 @@
         <div id="carouselExample" class="carousel slide mt-4" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="http://dummyimage.com/350" alt="Опис 1">
+                    <img src="/images/Ghost_card.webp" alt="Привид">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Опис 1</h5>
-                        <p>Опис першої картки.</p>
+                        <h5><a href="Gallery.html" style="color: white;">Привид</a></h5>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="http://dummyimage.com/350" alt="Опис 2">
+                    <img src="/images/Witch.jpg" alt="Відьма">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Опис 2</h5>
-                        <p>Опис другої картки.</p>
+                        <h5><a href="Gallery.html" style="color: white;">Відьма</a></h5>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="http://dummyimage.com/350" alt="Опис 3">
+                    <img src="/images/Vampire.jpeg" alt="Вампір">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Опис 3</h5>
-                        <p>Опис третьої картки.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="http://dummyimage.com/350" alt="Опис 4">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Опис 4</h5>
-                        <p>Опис четвертої картки.</p>
+                        <h5><a href="Gallery.html" style="color: white;">Вампір</a></h5>
                     </div>
                 </div>
             </div>
@@ -151,25 +154,26 @@
             </a>
         </div>
 
-        <!-- Зворотній відлік-->
-        <div id="countdown" class="mt-4">
-            Ведеться зворотній відлік до Хелловіна... 🎃
+        <!-- Зворотний відлік -->
+        <div id="countdown_back">
+            <div id="countdown" class="mt-4">
+                Ведеться зворотній відлік до Хелловіна... 🎃
+            </div>
         </div>
     </div>
 
     <!-- Футер -->
     <footer>
-        <p>&copy; 2024 ItStep Halloween Site. All Rights Reserved. 🎃</p>
+        <h3>&copy; 2024 ItStep Halloween Site. All Rights Reserved. 🎃</h3>
     </footer>
 
-    <!-- Bootstrap JS, Popper.js і jQuery -->
+    <!-- Bootstrap JS, Popper.js та jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- Скрипт для зворотнього відліку -->
     <script>
-        // Функція для оновлення таймера
         function updateCountdown() {
             const halloweenDate = new Date('October 31, 2024 00:00:00').getTime();
             const now = new Date().getTime();
@@ -183,10 +187,8 @@
 
                 document.getElementById('countdown').innerText = `Лише ${days} днів, ${hours} годин, ${minutes} хвилин і ${seconds} секунд до Хелловіна! 🎃`;
             } else {
-                document.getElementById('countdown').innerText = "З Хелловіном! 🎃";
+                document.getElementById('countdown').innerText = "Настав час Хелловіна! 🎃";
             }
         }
         setInterval(updateCountdown, 1000);
     </script>
-</body>
-</html>
