@@ -28,12 +28,17 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
-        h1, h2 {
+        h1 {
             text-align: center;
             text-shadow: 3px 3px 5px #ff4500;
             animation: spookyText 2s infinite alternate;
         }
 
+        h2{
+            text-align: center;
+            text-shadow: 3px 3px 5px #ff4500;
+            color: #ff6600;
+        }
         @keyframes spookyText {
             from {
                 transform: scale(1);
@@ -93,17 +98,23 @@
             margin-top: auto; 
         }
 
-        a:hover {
+        .nav-link {
+            font-size: 1.5rem; 
+            padding: 15px 20px;
+            transition: background-color 0.3s, color 0.3s; 
+        }
+
+        .nav-link:hover {
             color: #ff4500;
             text-shadow: 2px 2px 10px #ff7f50;
-            transition: 0.3s;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
     <!-- Хедер -->
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="#">👻 Halloween ItStep</a>
+        <a class="navbar-brand" href="index.html">👻 Halloween ItStep</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Перемикач навігації">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -136,8 +147,8 @@
             
             <!-- Результати -->
             <div id="result">
-                <h2>Ви відповіли <span id="correct-answers"></span> з <span id="total-questions"></span> правильних відповідей!</h2>
-                <p>Це <span id="percentage"></span>% точності.</p>
+                <h2>You answer on <span id="correct-answers"></span> of <span id="total-questions"></span> correct answers!</h2>
+                <p>This is <span id="percentage"></span>% accuracy.</p>
                 <h3 id="developer-description"></h3>
                 <img id="monster-image" class="monster-image" src="http://dummyimage.com/120" alt="Результат монстра">
             </div>
@@ -145,7 +156,7 @@
     </div>
     <!-- Футер -->
     <footer>
-        <p>&copy; 2024 ItStep Halloween Site. All Rights Reserved. 🎃</p>
+        <h3>&copy; 2024 ItStep Halloween Site. All Rights Reserved. 🎃</h3>
     </footer>
 
     <!-- Bootstrap JS, Popper.js та jQuery для динаміки -->
@@ -156,8 +167,8 @@
     <!-- Скрипт вікторини -->
     <script>
         const questions = [
-            { question: "Які основні мови програмування використовуються для створення веб-сайтів?", options: ["Python, C++, Java", "Python, HTML, Java", "HTML, CSS, JavaScript"], correct: 2 },
-            { question: "Який тег використовується для вставки зображення на сайт?", options: ["a", "img", "li"], correct: 1 },
+            { question: "What are the main programming languages ​​used to create websites?", options: ["Python, C++, Java", "Python, HTML, Java", "HTML, CSS, JavaScript"], correct: 2 },
+            { question: "What tag is used to insert an image on a site?", options: ["a", "img", "li"], correct: 1 },
             // При затвердженні проєкта, додамо більше питань!
         ];
 
@@ -194,7 +205,7 @@
                 currentQuestionIndex++;
                 loadQuestion();
             } else {
-                alert("Оберіть відповідь перед її відправленням!");
+                alert("Choose your answer before sending it!");
             }
         }
 
@@ -212,13 +223,13 @@
             //Вивід який ти монстр-розробник
             const developerDescription = document.getElementById('developer-description');
             if (percentage >= 80) {
-                developerDescription.innerText = 'Ти божевільний геній Веб-розробки!';
+                developerDescription.innerText = 'You are a crazy Web Development genius!';
                 document.getElementById('monster-image').src = '/images/Genius.jpeg';
             } else if (percentage >= 50) {
-                developerDescription.innerText = 'Ти зомбі-розробник!';
+                developerDescription.innerText = 'You are a zombie developer!';
                 document.getElementById('monster-image').src = '/images/Zombie.png';
             } else {
-                developerDescription.innerText = 'Ти привид-початківець!';
+                developerDescription.innerText = 'You are a novice ghost!';
                 document.getElementById('monster-image').src = '/images/Ghost_card.webp';
             }
         }
