@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Вікторина на Хелловін</title>
-    <!-- Підключення Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Підключення Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
     
     <style>
@@ -112,7 +110,6 @@
     </style>
 </head>
 <body>
-    <!-- Хедер -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="index.html">👻 Halloween ItStep</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Перемикач навігації">
@@ -136,16 +133,12 @@
         </div>
     </nav>
 
-    <!-- Основний контент -->
     <div class="container mt-4">
         <h1>Test your knowledge of Web development!</h1>
         <div class="quiz-container">
-            <!-- Питання вікторини -->
             <div id="quiz-question-container">
-                <!-- Питання будуть відображатися у цьому дів по одному! -->
             </div>
             
-            <!-- Результати -->
             <div id="result">
                 <h2>You answer on <span id="correct-answers"></span> of <span id="total-questions"></span> correct answers!</h2>
                 <p>This is <span id="percentage"></span>% accuracy.</p>
@@ -154,22 +147,18 @@
             </div>
         </div>
     </div>
-    <!-- Футер -->
     <footer>
         <h3>&copy; 2024 ItStep Halloween Site. All Rights Reserved. 🎃</h3>
     </footer>
 
-    <!-- Bootstrap JS, Popper.js та jQuery для динаміки -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <!-- Скрипт вікторини -->
     <script>
         const questions = [
             { question: "What are the main programming languages ​​used to create websites?", options: ["Python, C++, Java", "Python, HTML, Java", "HTML, CSS, JavaScript"], correct: 2 },
             { question: "What tag is used to insert an image on a site?", options: ["a", "img", "li"], correct: 1 },
-            // При затвердженні проєкта, додамо більше питань!
         ];
 
         let currentQuestionIndex = 0;
@@ -212,15 +201,13 @@
         function showResults() {
             const totalQuestions = questions.length;
             const percentage = Math.round((correctAnswers / totalQuestions) * 100);
-            
-            // Відображення результатів
+
             document.getElementById('correct-answers').innerText = correctAnswers;
             document.getElementById('total-questions').innerText = totalQuestions;
             document.getElementById('percentage').innerText = percentage;
             document.getElementById('quiz-question-container').style.display = 'none';
             document.getElementById('result').style.display = 'block';
 
-            //Вивід який ти монстр-розробник
             const developerDescription = document.getElementById('developer-description');
             if (percentage >= 80) {
                 developerDescription.innerText = 'You are a crazy Web Development genius!';
@@ -233,8 +220,6 @@
                 document.getElementById('monster-image').src = '/images/Ghost_card.webp';
             }
         }
-
-        // Завантаження першого питання при відкритті сторінки
         window.onload = loadQuestion;
     </script>
 </body>
