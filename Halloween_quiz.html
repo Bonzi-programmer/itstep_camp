@@ -211,13 +211,13 @@
             const developerDescription = document.getElementById('developer-description');
             if (percentage >= 80) {
                 developerDescription.innerText = 'You are a crazy Web Development genius!';
-                document.getElementById('monster-image').src = '/images/Genius.jpeg';
+                document.getElementById('monster-image').src = 'images/Genius.jpeg';
             } else if (percentage >= 50) {
                 developerDescription.innerText = 'You are a zombie developer!';
-                document.getElementById('monster-image').src = '/images/Zombie.png';
+                document.getElementById('monster-image').src = 'images/Zombie.png';
             } else {
                 developerDescription.innerText = 'You are a novice ghost!';
-                document.getElementById('monster-image').src = '/images/Ghost_card.webp';
+                document.getElementById('monster-image').src = 'images/Ghost_card.webp';
             }
         }
         window.onload = loadQuestion;
